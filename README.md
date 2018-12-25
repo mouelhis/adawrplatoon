@@ -18,7 +18,7 @@ Sources (old) can be found under the folder polyorb-src/ of the repository; the 
 `cd <polyorb_sources>/`<br/>
 `cat polyorb_2014_arm_enabled.patch | patch -p1`
 
-Compatibility issues should be fixed if a newer version of PolyORB (https://github.com/AdaCore/PolyORB) should be used. 
+Compatibility issues are to be checked and fixed if a newer version of PolyORB (https://github.com/AdaCore/PolyORB) should be used. 
 
 
 ## Deployment 
