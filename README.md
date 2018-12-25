@@ -12,7 +12,7 @@ Robots are directly controlled by Romeo All-in-One V1.3 boards enslaved by Raspb
 ## Wheeled robots setting
 
 Robots should be mounted according the architecture provided in [\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739); the first settings are the following:
-* flash the Arduino code `arduino/sketch_wheeled_robot.ino` under the low-level Romeo controllers of robots:
+* flash the Arduino code `arduino/sketch_romeo.ino` under the low-level Romeo controllers of robots:
   - robots should be connected by USB to your host;
   - use the tool `arduino` under your host to flash the code; 
 * use preferably a real-time kernel under high level RPi controllers of robots;
