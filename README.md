@@ -64,6 +64,7 @@ For native compilation, the above compilation steps are adapted:
 # make
 # make install
 ```
+Consult [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for more details.
 
 ## Platoon application 
 
@@ -97,7 +98,7 @@ On each RPi controller,
 # export POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<HOST_IP>:<HOST_PORT1>/NameService/000000024fF0000000080000000
 #./<runnable>
 ```
-Consult [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details.
+Consult [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for more details.
 
 ## Contact
 For any question, feel free to contact Sebti Mouelhi @ ECE Paris (`first _dot_ last _at_ ece _dot_ fr`).
