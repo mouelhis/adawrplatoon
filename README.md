@@ -37,13 +37,17 @@ The apt installation process of the GNAT compiler automatically build the packag
 
 ### ARM cross-compilation
 
+Read `INSTALL` for more details:
+
 ```
-# ./configure --target=arm-linux-gnueabi --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
+# ./configure --target=arm-linux-gnueabihf --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
 # make
 # make install
 ```
 
-Read `INSTALL` for more details.
+
+If `make install`does not finish properly and displays an error message about the absence of a binary `arm-linux-gnueabihf-gcc-*-*` where `*` is a version equal to (or higher than) 5, create a copy of `arm-linux-gnueabihf-gcc-*` with the name `arm-linux-gnueabihf-gcc-*-*` under `/usr/bin`.
+
 
 ## Deployment 
 Check file DEPLOYMENT
