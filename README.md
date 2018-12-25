@@ -45,6 +45,7 @@ The apt installation process of the GNAT compiler automatically build the packag
 
 To ARM-cross compile, being under `<polyorb_sources>` run the follwoing commands (read `INSTALL` for more details):
 ```
+# export RANLIB=/usr/bin/arm-linux-gnueabihf-ranlib
 # ./configure --target=arm-linux-gnueabihf --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
 # make
 # make install
@@ -72,7 +73,13 @@ ARM-cross compilation: `export TARGET=arm; make clean; make all`
 Native compilation: `export TARGET=; make clean; make all`
 
 ## Deployment and running
-Remote robots object refrences are to be stored in a base station (`base` runnable) that should be launched before running the wheeled robots platoon (`lead`, `foll_1` and `foll_2` runnbales); the runnbale `base` could be compiled natively on your host machine; the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level controllers (Raspberries) of robots.
+Remote robots object refrences are to be stored in a base station (`base` runnable) that should be launched before running the wheeled robots platoon (`lead`, `foll_1` and `foll_2` runnbales). 
+
+The runnbale `base` could be compiled natively on your host machine, and the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level RPi controllers of robots. Be sure to provide the good MAC bluetooth addresses respectively in `leader.adb`, `follower_1.adb` and `follower_2.adb`. 
+
+Before launching `base` on your host, you should first run the following commands (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming) for details):
+* set your the host IP address in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
+* go
 
 
 ## Contact
