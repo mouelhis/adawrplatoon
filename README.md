@@ -65,12 +65,12 @@ For native compilation, the above compilation steps are adapted:
 # make install
 ```
 
-## Application compilation 
+## Platton application compilation 
 
-The [BlueZ](http://www.bluez.org/download/) library (5.44 or higher) should be ARM-cross compiled; I remember adapting the steps described in this [tutorial](https://wiki.beyondlogic.org/index.php?title=Cross_Compiling_BlueZ_Bluetooth_tools_for_ARM) (the stepborn part was to cross-compile dependencies).   
+The [BlueZ](http://www.bluez.org/download/) library (5.44 or higher) should be ARM-cross compiled before; I remember adapting the steps described in this [tutorial](https://wiki.beyondlogic.org/index.php?title=Cross_Compiling_BlueZ_Bluetooth_tools_for_ARM) (the stepborn part was to cross-compile dependencies).   
 
-ARM-cross compilation: `export TARGET=arm; make clean; make all`<br/>
-Native compilation: `export TARGET=; make clean; make all`
+**ARM**: `export TARGET=arm; make clean; make all`<br/>
+**Native**: `export TARGET=; make clean; make all`
 
 ## Deployment and running
 Robots object refrences are to be stored in a base station (runnable `base`) that should be launched before running the wheeled robots platoon (runnbales `lead`, `foll_1` and `foll_2`). 
