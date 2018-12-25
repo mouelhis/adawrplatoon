@@ -31,7 +31,15 @@ g++
 cpp
 ```
 
-Under Debian distribution, the apt installation process of the GNAT compiler automatically build the package `gprbuild`, be sure to remove it later.
+The apt installation process of the GNAT compiler automatically build the package `gprbuild`, be sure to remove it later.
+
+### ARM cross-compilation
+
+`# ./configure --target=arm-linux-gnueabi --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
+`# make`
+`# make install`
+
+Read `INSTALL` for more details.
 
 ## Deployment 
 Check file DEPLOYMENT
