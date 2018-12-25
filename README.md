@@ -46,7 +46,9 @@ Read `INSTALL` for more details:
 ```
 
 
-If `make install`does not finish properly and displays an error message about the absence of a binary `arm-linux-gnueabihf-gcc-*-*` where `*` is a version equal to (or higher than) 5, create a copy of `arm-linux-gnueabihf-gcc-*` with the name `arm-linux-gnueabihf-gcc-*-*` under `/usr/bin`.
+If `make install`does not finish properly and displays an error message about the absence of a binary `arm-linux-gnueabihf-gcc-*-*` where `*` is a version equal to (or higher than) 5, create a copy of `arm-linux-gnueabihf-gcc-*` with the name `arm-linux-gnueabihf-gcc-*-*` under `/usr/bin` and redo `make install` again.
+
+After the installation process, the binaries `po_gnatdist` and `po_cos_naming` and other required libraries and tools will be available under `/usr/local/arm-linux-gnueabihf`. Be sure that tools and libraries are distributed correctly in the tree `bin  include  lib  share` under `/usr/local/arm-linux-gnueabihf`.
 
 
 ## Deployment 
