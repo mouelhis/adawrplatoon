@@ -75,11 +75,12 @@ The [BlueZ](http://www.bluez.org/download/) library (5.44 or higher) should be A
 **Native**: `export TARGET=; make clean; make all`
 
 ### Deployment and running
+
 Robots object refrences are to be stored in a base station (runnable `base`) that should be launched before running the wheeled robots platoon (runnbales `lead`, `foll_1` and `foll_2`). 
 
 The runnbale `base` could be compiled natively on your host machine, and each of the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level RPi controller of the corresponding robot. Be sure to provide the good MAC bluetooth addresses of RPi controllers respectively in `leader.adb`, `follower_1.adb` and `follower_2.adb`. 
 
-On your host, follow these steps (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details):
+On your host, 
 * set the `<HOST_IP>` address (with an available first `<HOST_PORT1>` for [`po_cos_naming`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming)) in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
 * set `polyorb.protocols.iiop.default_port=<HOST_PORT2>` with a second `<HOST_PORT2>` (used by `base`) under the entry `[iiop]`, then run:
 ``` 
@@ -88,7 +89,7 @@ On your host, follow these steps (see [PolyORB User's Guide](http://docs.adacore
 # ./base
 ```
 
-On each RPi controller, follow these steps: 
+On each RPi controller, 
 * transfer to the RPi the corresponding `<runnable>` (`lead`, `foll_1` or `foll_2`) and the file `polyorb.conf`;
 * set `polyorb.protocols.iiop.default_addr=<RPI_IP>` address in `polyorb.conf` under the entry `[iiop]`;
 * set `polyorb.protocols.iiop.default_port=<RPI_PORT>` for some available `<RPI_PORT>` under the entry `[iiop]` then run:
@@ -96,6 +97,7 @@ On each RPi controller, follow these steps:
 # export POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<HOST_IP>:<HOST_PORT1>/NameService/000000024fF0000000080000000
 #./<runnable>
 ```
+Consult [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details.
 
 ## Contact
 For any question, feel free to contact Sebti Mouelhi @ ECE Paris (`first _dot_ last _at_ ece _dot_ fr`).
