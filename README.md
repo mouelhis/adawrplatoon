@@ -38,7 +38,6 @@ For native/ARM `arm-linux-gnueabihf` cross) compilation, the following dependenc
 gnat
 gcc
 g++
-g++
 cpp
 ```
 
