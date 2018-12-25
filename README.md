@@ -14,9 +14,11 @@ Robots are directly controlled by the Romeo All-in-One V1.3 boards enslaved by R
 
 Sources (old) can be found under the folder polyorb-src/ of the repository; the patch polyorb-src/polyorb_2014_for_arm.patch should be applied before to enable error-free ARM compilation 
 
-`cp polyorb_2014_arm_enabled.patch <polyorb_sources>/`<br/>
-`cd <polyorb_sources>/`<br/>
-`cat polyorb_2014_arm_enabled.patch | patch -p1`
+```
+cp polyorb_2014_arm_enabled.patch <polyorb_sources>/
+cd <polyorb_sources>/
+cat polyorb_2014_arm_enabled.patch | patch -p1
+```
 
 Compatibility issues are to be checked and fixed if a newer version of PolyORB (https://github.com/AdaCore/PolyORB) should be used. 
 
@@ -35,9 +37,11 @@ The apt installation process of the GNAT compiler automatically build the packag
 
 ### ARM cross-compilation
 
-`# ./configure --target=arm-linux-gnueabi --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
-`# make`
-`# make install`
+```
+# ./configure --target=arm-linux-gnueabi --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
+# make
+# make install
+```
 
 Read `INSTALL` for more details.
 
