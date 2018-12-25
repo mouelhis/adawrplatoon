@@ -1,6 +1,6 @@
 # Distributed control of wheeled robots platoons using the middlware PolyORB
 
-This github repository is an Ada implementation of the design approach presented in the paper "Distributed Object-Oriented Design of Autonomous Control Systems for Connected Vehicle Platoons" (doi : 10.1109/ICECCS.2017.32).
+This github repository is an Ada implementation of the design approach presented in the paper [Distributed Object-Oriented Design of Autonomous Control Systems for Connected Vehicle Platoons](https://hal.archives-ouvertes.fr/hal-01592739) (doi : 10.1109/ICECCS.2017.32).
 
 See the animations videos below<br/>
 https://www.youtube.com/watch?v=2WHyy5Z7nv4<br/>
@@ -8,6 +8,15 @@ https://www.youtube.com/watch?v=vIlWZUfYKIY<br/>
 https://www.youtube.com/watch?v=Cl-vGISxBe4
 
 Robots are directly controlled by the Romeo All-in-One V1.3 boards enslaved by Raspberry Pi 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels 4.4.21. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in the reference paper above. Distribution in the application is managed by the middleware PolyORB (maintained by AdaCore).
+
+## Robots setting
+
+Wheeled robots should be mounted according the architecture provided in the reference paper above; the first settings you should are the following steps:
+* flash the Arduino code under `arduino/sketch_wheeled_robot.ino` under the low-level Arduino Romeo micro-controllers of robots:
+ - robots should be connected by USB to your host;
+ - use the tool `arduino` under your host to flash the code; 
+* use preferably a real-time kernel under high level Raspberry Pi (RPi) controllers of robots;
+* be sure that GCC and GNAT are installed under the robot RPis.
 
 ## PolyORB 2014 Compilation 
 ### Patching
@@ -24,7 +33,7 @@ Compatibility issues are to be checked and fixed if a [newer version](https://gi
 
 ### Native/ARM-cross compilation
 
-For native/ARM `arm-linux-gnueabihf` cross) compilation, the following dependencies (version 5 or higher) are required under Debian distributons:
+For native/ARM `arm-linux-gnueabihf` cross) compilation, the following dependencies (version 5 or higher) are required under Debian distributions:
 ```
 gnat
 gcc
@@ -58,7 +67,14 @@ For native compilation, the above compilation steps are adapted:
 
 ## Application compilation 
 
-The [BlueZ](http://www.bluez.org/download/) library (5.44 or higher) should be ARM-cross compiled. I remember following the steps described in this [tutorial](https://wiki.beyondlogic.org/index.php?title=Cross_Compiling_BlueZ_Bluetooth_tools_for_ARM) (the stepborn part was to cross-compile dependencies).   
+The [BlueZ](http://www.bluez.org/download/) library (5.44 or higher) should be ARM-cross compiled; I remember following the steps described in this [tutorial](https://wiki.beyondlogic.org/index.php?title=Cross_Compiling_BlueZ_Bluetooth_tools_for_ARM) (the stepborn part was to cross-compile dependencies).   
 
-## Conact
+ARM-cross compilation: `export TARGET=arm; make clean; make all`
+Native compilation: `export TARGET=; make clean; make all`
+
+## Deployment and running
+Remote robots object refrences are to be stored in a base station (`base` runnable) that should be launched before running the wheeled robots platoon (`lead`, `foll_1` and `foll_2` runnbales); the runnbale `base` could be compiled natively on your host machine; the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level controllers (Raspberries) of robots.
+
+
+## Contact
 Sebti Mouelhi (sebti _dot_ mouelhi _at_ ece _dot_ fr)
