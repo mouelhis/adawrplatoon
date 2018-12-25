@@ -104,4 +104,4 @@ Consult [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/po
 For any question, feel free to contact Sebti Mouelhi @ ECE Paris (`first _dot_ last _at_ ece _dot_ fr`).
 
 ## Reference
-[\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739) S. Mouelhi, D. Cancila and A. Ramdane-Cherif, "Distributed Object-Oriented Design of Autonomous Control Systems for Connected Vehicle Platoons," 2017 22nd International Conference on Engineering of Complex Computer Systems (ICECCS), Fukuoka, 2017, pp. 40-49. doi: 10.1109/ICECCS.2017.32
+[\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739) S. Mouelhi, D. Cancila and A. Ramdane-Cherif, "Distributed Object-Oriented Design of Autonomous Control Systems for Connected Vehicle Platoons, In the Procs. of "The 22nd International Conference on Engineering of Complex Computer Systems (ICECCS'17)", Fukuoka, 2017, pp. 40-49. doi: 10.1109/ICECCS.2017.32
