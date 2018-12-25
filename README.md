@@ -77,10 +77,10 @@ The [BlueZ](http://www.bluez.org/download/) library (5.44 or higher) should be A
 ### Deployment and running
 Robots object refrences are to be stored in a base station (runnable `base`) that should be launched before running the wheeled robots platoon (runnbales `lead`, `foll_1` and `foll_2`). 
 
-The runnbale `base` could be compiled natively on your host machine, and each of the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level RPi controller of teh corresponding robot. Be sure to provide the good MAC bluetooth addresses respectively in `leader.adb`, `follower_1.adb` and `follower_2.adb`. 
+The runnbale `base` could be compiled natively on your host machine, and each of the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level RPi controller of the corresponding robot. Be sure to provide the good MAC bluetooth addresses of RPi controllers respectively in `leader.adb`, `follower_1.adb` and `follower_2.adb`. 
 
-On your host, you should do the following (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details):
-* set your the host `<HOST_IP>` address (with an available first `<HOST_PORT1>` for [`po_cos_naming`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming)) in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
+On your host, follow these steps (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details):
+* set the `<HOST_IP>` address (with an available first `<HOST_PORT1>` for [`po_cos_naming`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming)) in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
 * set `polyorb.protocols.iiop.default_port=<HOST_PORT2>` with a second `<HOST_PORT2>` (used by `base`) under the entry `[iiop]`, then run:
 ``` 
 # po_cos_naming &
@@ -88,7 +88,7 @@ On your host, you should do the following (see [PolyORB User's Guide](http://doc
 # ./base
 ```
 
-On each robot RPi controller, you should do the following: 
+On each RPi controller, follow these steps: 
 * transfer to the RPi the corresponding `<runnable>` (`lead`, `foll_1` or `foll_2`) and the file `polyorb.conf`;
 * set `polyorb.protocols.iiop.default_addr=<RPI_IP>` address in `polyorb.conf` under the entry `[iiop]`;
 * set `polyorb.protocols.iiop.default_port=<RPI_PORT>` for some available `<RPI_PORT>` under the entry `[iiop]` then run:
