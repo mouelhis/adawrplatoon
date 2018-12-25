@@ -7,21 +7,21 @@ https://www.youtube.com/watch?v=2WHyy5Z7nv4<br/>
 https://www.youtube.com/watch?v=vIlWZUfYKIY<br/>
 https://www.youtube.com/watch?v=Cl-vGISxBe4
 
-Robots are directly controlled by Romeo All-in-One V1.3 boards enslaved by Raspberry Pi (RPi) 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in [\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739). Distribution in the application is managed by the middleware PolyORB (maintained by AdaCore).
+Robots are directly controlled by Romeo All-in-One V1.3 boards enslaved by Raspberry Pi (RPi) 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in [\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739). Distribution is managed by the middleware PolyORB (maintained by AdaCore).
 
 ## Wheeled robots
 
 Robots should be mounted according the architecture provided in [\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739); the first settings are the following:
 * flash the Arduino code `arduino/sketch_romeo.ino` under the low-level Romeo controllers of robots:
-  - robots should be connected by USB to your host;
-  - use the tool `arduino` under your host to flash the code; 
-* use preferably a real-time kernel under high level RPi controllers of robots;
-* be sure that GCC and GNAT are installed under the robot RPi controllers.
+  - the Romeo board should be connected by USB to your host;
+  - use the tool `arduino` to flash the code from your host ; 
+* use preferably a real-time kernel under the high level RPi controllers;
+* be sure that GCC and GNAT are installed on RPi cards.
 
 ## PolyORB 2014 Compilation 
 ### Patching
 
-Sources (old) can be found under the folder polyorb-src/ of the repository; the patch polyorb-src/polyorb_2014_for_arm.patch should be applied before to enable error-free ARM compilation 
+Sources (old) can be found under the folder `polyorb-src/` of the repository; the patch `polyorb-src/polyorb_2014_arm_enabled.patch` should be applied before to enable error-free ARM compilation 
 
 ```
 cp polyorb_2014_arm_enabled.patch <polyorb_sources>/
@@ -33,7 +33,7 @@ Compatibility issues are to be checked and fixed if a [newer version](https://gi
 
 ### Native/ARM-cross compilation
 
-For native/ARM `arm-linux-gnueabihf` cross) compilation, the following dependencies (version 5 or higher) are required under Debian distributions:
+For native/ARM(`arm-linux-gnueabihf`)-cross) compilation, the following dependencies (version 5 or higher) are required under Debian distributions:
 ```
 gnat
 gcc
@@ -41,9 +41,9 @@ g++
 cpp
 ```
 
-The apt installation process of the GNAT compiler automatically build the package `gprbuild`, be sure to remove it later.
+The apt installation process of the GNAT compiler build automatically the package `gprbuild`, be sure to remove it later.
 
-To ARM-cross compile, being under `<polyorb_sources>` run the follwoing commands (read `INSTALL` for more details):
+Being under `<polyorb_sources>/` run the follwoing commands to ARM-cross compile (read `INSTALL` for more details):
 ```
 # export RANLIB=/usr/bin/arm-linux-gnueabihf-ranlib
 # ./configure --target=arm-linux-gnueabihf --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
@@ -53,7 +53,7 @@ To ARM-cross compile, being under `<polyorb_sources>` run the follwoing commands
 
 If `make install`does not finish properly and displays an error message about the absence of a binary `arm-linux-gnueabihf-gcc-*-*` where `*` is a version equal to (or higher than) 5, create a copy of `arm-linux-gnueabihf-gcc-*` with the name `arm-linux-gnueabihf-gcc-*-*` under `/usr/bin` and redo `make install` again.
 
-After the installation process, the binaries `po_gnatdist` and `po_cos_naming` and other required libraries and tools will be available under `/usr/local/arm-linux-gnueabihf`. Be sure that tools and libraries are distributed correctly in the tree `bin  include  lib  share` under `/usr/local/arm-linux-gnueabihf`.
+After the installation process, the binaries `po_gnatdist` and `po_cos_naming` and other required libraries and tools will be generated and copied in the `/usr/local/arm-linux-gnueabihf` folder tree `bin  include  lib  share`. Be sure that tools and libraries are distributed correctly in the tree.
 
 Finally, export `/usr/local/arm-linux-gnueabihf/bin` in your `PATH`.
 
@@ -79,17 +79,21 @@ The runnbale `base` could be compiled natively on your host machine, and each of
 
 On your host, you should do the following (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details):
 * set your the host `<HOST_IP>` address (with an available first `<HOST_PORT1>` for [`po_cos_naming`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming)) in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
-* set `polyorb.protocols.iiop.default_port=<HOST_PORT2>` with a second `<HOST_PORT2>` (used by `base`) under the entry `[iiop]`;
-* run `po_cos_naming` in background (suffix `&`);
-* export `POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<HOST_IP>:<HOST_PORT1>/NameService/000000024fF0000000080000000` to the environment;
-* run `sudo ./base`.
+* set `polyorb.protocols.iiop.default_port=<HOST_PORT2>` with a second `<HOST_PORT2>` (used by `base`) under the entry `[iiop]`, then run:
+``` 
+# po_cos_naming &
+# export POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<HOST_IP>:<HOST_PORT1>/NameService/000000024fF0000000080000000
+# ./base
+```
 
 On each robot RPi controller, you should do the following: 
 * transfer to the RPi the corresponding `<runnable>` (`lead`, `foll_1` or `foll_2`) and the file `polyorb.conf`;
 * set `polyorb.protocols.iiop.default_addr=<RPI_IP>` address in `polyorb.conf` under the entry `[iiop]`;
-* set `polyorb.protocols.iiop.default_port=<RPI_PORT>` for some available `<RPI_PORT>` under the entry `[iiop]`;
-* export `POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<HOST_IP>:<HOST_PORT1>/NameService/000000024fF0000000080000000` to the environment;
-* run `sudo ./<runnable>
+* set `polyorb.protocols.iiop.default_port=<RPI_PORT>` for some available `<RPI_PORT>` under the entry `[iiop]` then run:
+```
+# export POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<HOST_IP>:<HOST_PORT1>/NameService/000000024fF0000000080000000
+#./<runnable>
+```
 
 ## Contact
 For any question, feel free to contact Sebti Mouelhi @ ECE Paris (`first _dot_ last _at_ ece _dot_ fr`).
