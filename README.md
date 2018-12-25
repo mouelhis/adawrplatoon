@@ -35,7 +35,7 @@ cpp
 
 The apt installation process of the GNAT compiler automatically build the package `gprbuild`, be sure to remove it later.
 
-### ARM cross-compilation
+### Native/ARM-cross compilation
 
 Read `INSTALL` for more details:
 
@@ -45,11 +45,19 @@ Read `INSTALL` for more details:
 # make install
 ```
 
-
 If `make install`does not finish properly and displays an error message about the absence of a binary `arm-linux-gnueabihf-gcc-*-*` where `*` is a version equal to (or higher than) 5, create a copy of `arm-linux-gnueabihf-gcc-*` with the name `arm-linux-gnueabihf-gcc-*-*` under `/usr/bin` and redo `make install` again.
 
 After the installation process, the binaries `po_gnatdist` and `po_cos_naming` and other required libraries and tools will be available under `/usr/local/arm-linux-gnueabihf`. Be sure that tools and libraries are distributed correctly in the tree `bin  include  lib  share` under `/usr/local/arm-linux-gnueabihf`.
 
+Finally, export `/usr/local/arm-linux-gnueabihf/bin` in your `PATH`.
+
+For native compilation, the above compilation steps are adapted:
+
+```
+# ./configure --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
+# make
+# make install
+```
 
 ## Deployment 
 Check file DEPLOYMENT
