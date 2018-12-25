@@ -9,9 +9,9 @@ https://www.youtube.com/watch?v=Cl-vGISxBe4
 
 Robots are directly controlled by the Romeo All-in-One V1.3 boards enslaved by Raspberry Pi (RPi) 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in the [reference paper](https://hal.archives-ouvertes.fr/hal-01592739). Distribution in the application is managed by the middleware PolyORB (maintained by AdaCore).
 
-## Robots setting
+## Wheeled robots setting
 
-Wheeled robots should be mounted according the architecture provided in the [reference paper](https://hal.archives-ouvertes.fr/hal-01592739); the first settings are the following:
+Robots should be mounted according the architecture provided in the [reference paper](https://hal.archives-ouvertes.fr/hal-01592739); the first settings are the following:
 * flash the Arduino code `arduino/sketch_wheeled_robot.ino` under the low-level Romeo controllers of robots:
   - robots should be connected by USB to your host;
   - use the tool `arduino` under your host to flash the code; 
