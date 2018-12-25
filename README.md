@@ -1,13 +1,13 @@
 # Distributed control of wheeled robots platoons using the middlware PolyORB
 
-This github repository is an Ada implementation of the design approach presented in the paper [Distributed Object-Oriented Design of Autonomous Control Systems for Connected Vehicle Platoons](https://hal.archives-ouvertes.fr/hal-01592739) (doi : 10.1109/ICECCS.2017.32).
+This github repository is an Ada implementation of the distributed speed controller for platoons of connected wheeled robot. The software design and protyping approaches are presented in [\[Ref\]].
 
-See the animations videos below<br/>
+See animations in these Youtube videos:<br/>
 https://www.youtube.com/watch?v=2WHyy5Z7nv4<br/>
 https://www.youtube.com/watch?v=vIlWZUfYKIY<br/>
 https://www.youtube.com/watch?v=Cl-vGISxBe4
 
-Robots are directly controlled by the Romeo All-in-One V1.3 boards enslaved by Raspberry Pi (RPi) 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in the [reference paper](https://hal.archives-ouvertes.fr/hal-01592739). Distribution in the application is managed by the middleware PolyORB (maintained by AdaCore).
+Robots are directly controlled by Romeo All-in-One V1.3 boards enslaved by Raspberry Pi (RPi) 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in [\[Ref\]]. Distribution in the application is managed by the middleware PolyORB (maintained by AdaCore).
 
 ## Wheeled robots setting
 
@@ -73,16 +73,26 @@ ARM-cross compilation: `export TARGET=arm; make clean; make all`<br/>
 Native compilation: `export TARGET=; make clean; make all`
 
 ## Deployment and running
-Remote robots object refrences are to be stored in a base station (`base` runnable) that should be launched before running the wheeled robots platoon (`lead`, `foll_1` and `foll_2` runnbales). 
+Robots object refrences are to be stored in a base station (runnable `base`) that should be launched before running the wheeled robots platoon (runnbales `lead`, `foll_1` and `foll_2`). 
 
-The runnbale `base` could be compiled natively on your host machine, and the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level RPi controllers of robots. Be sure to provide the good MAC bluetooth addresses respectively in `leader.adb`, `follower_1.adb` and `follower_2.adb`. 
+The runnbale `base` could be compiled natively on your host machine, and each of the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level RPi controller of teh corresponding robot. Be sure to provide the good MAC bluetooth addresses respectively in `leader.adb`, `follower_1.adb` and `follower_2.adb`. 
 
-Before launching `base` on your host, you should first run the following commands (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details):
-* set your the host `<IP>` address (with an available first `<PORT1>` for [`po_cos_naming`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming)) in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
-* set `polyorb.protocols.iiop.default_port=<PORT2>` with a second `<PORT2>` (used by `base`) under the entry `[iiop]`;
+On your host, you should do the following (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details):
+* set your the host `<HOST_IP>` address (with an available first `<HOST_PORT1>` for [`po_cos_naming`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming)) in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
+* set `polyorb.protocols.iiop.default_port=<HOST_PORT2>` with a second `<HOST_PORT2>` (used by `base`) under the entry `[iiop]`;
 * run `po_cos_naming` in background (suffix `&`);
-* export `POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<IP>:<PORT1>/NameService/000000024fF0000000080000000` to the environment;
+* export `POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<HOST_IP>:<HOST_PORT1>/NameService/000000024fF0000000080000000` to the environment;
 * run `sudo ./base`.
 
+On each robot RPi controller, you should do the following: 
+* transfer to the RPi the corresponding `<runnable>` (`lead`, `foll_1` or `foll_2`) and the file `polyorb.conf`;
+* set `polyorb.protocols.iiop.default_addr=<RPI_IP>` address in `polyorb.conf` under the entry `[iiop]`;
+* set `polyorb.protocols.iiop.default_port=<RPI_PORT>` for some available `<RPI_PORT>` under the entry `[iiop]`;
+* export `POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<HOST_IP>:<HOST_PORT1>/NameService/000000024fF0000000080000000` to the environment;
+* run `sudo ./<runnable>
+
 ## Contact
-Sebti Mouelhi (`sebti _dot_ mouelhi _at_ ece _dot_ fr`)
+For any question, feel free to contact Sebti Mouelhi @ ECE Paris (`first _dot_ last _at_ ece _dot_ fr`).
+
+## Reference
+[\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739) S. Mouelhi, D. Cancila and A. Ramdane-Cherif, "Distributed Object-Oriented Design of Autonomous Control Systems for Connected Vehicle Platoons," 2017 22nd International Conference on Engineering of Complex Computer Systems (ICECCS), Fukuoka, 2017, pp. 40-49. doi: 10.1109/ICECCS.2017.32
