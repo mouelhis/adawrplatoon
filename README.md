@@ -85,4 +85,4 @@ Before launching `base` on your host, you should first run the following command
 * run `sudo ./base`.
 
 ## Contact
-Sebti Mouelhi (sebti _dot_ mouelhi _at_ ece _dot_ fr)
+Sebti Mouelhi (`sebti _dot_ mouelhi _at_ ece _dot_ fr`)
