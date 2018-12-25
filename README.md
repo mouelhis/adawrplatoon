@@ -77,10 +77,12 @@ Remote robots object refrences are to be stored in a base station (`base` runnab
 
 The runnbale `base` could be compiled natively on your host machine, and the runnables `lead`, `foll_1` and `foll_2` are to be ARM-cross compiled and deployed on the high level RPi controllers of robots. Be sure to provide the good MAC bluetooth addresses respectively in `leader.adb`, `follower_1.adb` and `follower_2.adb`. 
 
-Before launching `base` on your host, you should first run the following commands (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming) for details):
-* set your the host IP address in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
-* go
-
+Before launching `base` on your host, you should first run the following commands (see [PolyORB User's Guide](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/ug_contents.html#) for details):
+* set your the host IP address (with an available first `<PORT1>` for [`po_cos_naming`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/CORBA.html#po-cos-naming)) in `polyorb.conf` under [`[dsa]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/Ada_Distributed_Systems_Annex_(DSA).html) and [`[iiop]`](http://docs.adacore.com/live/wave/polyorb/html/polyorb_ug/GIOP.html#iiop) entries;
+* set `polyorb.protocols.iiop.default_port=<PORT2>` with a second `<PORT2>` under the entry `[iiop]` to be used by the base
+* run `po_cos_naming` in background (suffix `&`);
+* export `POLYORB_DSA_NAME_SERVICE=corbaloc:iiop:1.2@<IP>:<PORT1>/NameService/000000024fF0000000080000000` to the environment
+* run `sudo ./base`
 
 ## Contact
 Sebti Mouelhi (sebti _dot_ mouelhi _at_ ece _dot_ fr)
