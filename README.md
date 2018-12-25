@@ -58,7 +58,7 @@ For native compilation, the above compilation steps are adapted:
 
 ## Application compilation 
 
-The BlueZ library (5.44 or higher) should be ARM-cross compiled. The library is vailable under this [link](http://www.bluez.org/download/). I remember following the steps described in this [tutorial](https://wiki.beyondlogic.org/index.php?title=Cross_Compiling_BlueZ_Bluetooth_tools_for_ARM) (the complicated steps were to cross-compile dependencies).   
+The [BlueZ](http://www.bluez.org/download/) library (5.44 or higher) should be ARM-cross compiled. I remember following the steps described in this [tutorial](https://wiki.beyondlogic.org/index.php?title=Cross_Compiling_BlueZ_Bluetooth_tools_for_ARM) (the complicated steps were to cross-compile dependencies).   
 
 ## Conact
 Sebti Mouelhi (sebti _dot_ mouelhi _at_ ece _dot_ fr)
