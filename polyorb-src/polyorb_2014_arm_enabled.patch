@@ -1,0 +1,66 @@
+diff -aur a/configure b/configure
+--- a/configure	2014-05-16 11:00:13.000000000 +0200
++++ b/configure	2018-12-25 19:37:38.020898497 +0100
+@@ -3235,7 +3235,7 @@
+     TARGET_EXE_SUFFIX=.exe
+     ;;
+ esac
+-ADAFLAGS_FOR_TARGET="${CFLAGS_FOR_TARGET} ${ADDITIONAL_CONF_PRAGMAS_SWITCH}"
++ADAFLAGS_FOR_TARGET="${CFLAGS_FOR_TARGET} ${ADDITIONAL_CONF_PRAGMAS_SWITCH} -largs"
+ 
+ 
+ 
+diff -aur a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2013-11-20 15:58:55.000000000 +0100
++++ b/Makefile.in	2017-10-13 18:23:23.241488443 +0200
+@@ -496,7 +496,7 @@
+ libpolyorb-dsa.a: polyorb_src_dsa.gpr
+ 
+ ifeq (${HAVE_GPRBUILD}, no)
+-polyorb_src_dsa.gpr: PRJ_GNATMAKE_FLAGS := -a
++polyorb_src_dsa.gpr: PRJ_GNATMAKE_FLAGS := -a -x
+ # Some components of the DSA application personality are child units of
+ # System: use -a to allow gnatmake to compile them.
+ endif
+diff -aur a/support/config.guess b/support/config.guess
+--- a/support/config.guess	2013-01-17 18:34:27.000000000 +0100
++++ b/support/config.guess	2017-10-13 18:23:23.377487023 +0200
+@@ -4,7 +4,7 @@
+ #   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+ #   2011, 2012 Free Software Foundation, Inc.
+ 
+-timestamp='2012-02-10'
++timestamp='2016-11-26'
+ 
+ # This file is free software; you can redistribute it and/or modify it
+ # under the terms of the GNU General Public License as published by
+@@ -157,7 +157,7 @@
+ 	    /usr/sbin/$sysctl 2>/dev/null || echo unknown)`
+ 	case "${UNAME_MACHINE_ARCH}" in
+ 	    armeb) machine=armeb-unknown ;;
+-	    arm*) machine=arm-unknown ;;
++	    arm*) machine=arm ;;
+ 	    sh3el) machine=shl-unknown ;;
+ 	    sh3eb) machine=sh-unknown ;;
+ 	    sh5el) machine=sh5le-unknown ;;
+diff -aur a/support/config.sub b/support/config.sub
+--- a/support/config.sub	2013-01-17 18:34:27.000000000 +0100
++++ b/support/config.sub	2017-10-13 18:23:23.377487023 +0200
+@@ -4,7 +4,7 @@
+ #   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+ #   2011, 2012 Free Software Foundation, Inc.
+ 
+-timestamp='2012-02-10'
++timestamp='2016-11-26'
+ 
+ # This file is (in principle) common to ALL GNU software.
+ # The presence of a machine in this file suggests that SOME GNU software
+@@ -311,7 +311,7 @@
+ 	| we32k \
+ 	| x86 | xc16x | xstormy16 | xtensa \
+ 	| z8k | z80)
+-		basic_machine=$basic_machine-unknown
++		basic_machine=$basic_machine
+ 		;;
+ 	c54x)
+ 		basic_machine=tic54x-unknown
