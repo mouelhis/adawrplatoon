@@ -20,7 +20,7 @@ cd <polyorb_sources>/
 cat polyorb_2014_arm_enabled.patch | patch -p1
 ```
 
-Compatibility issues are to be checked and fixed if a newer version of PolyORB (https://github.com/AdaCore/PolyORB) should be used. 
+Compatibility issues are to be checked and fixed if a [newer version](https://github.com/AdaCore/PolyORB) of PolyORB should be used. 
 
 ### Native/ARM-cross compilation
 
@@ -58,8 +58,7 @@ For native compilation, the above compilation steps are adapted:
 
 ## Application compilation 
 
-The BlueZ library (5.44 or higher) should be ARM-cross compiled. The library is vailable under http://www.bluez.org/download/. 
-I remember following the steps described in https://wiki.beyondlogic.org/index.php?title=Cross_Compiling_BlueZ_Bluetooth_tools_for_ARM (the complicated steps were to cross-compile dependencies).   
+The BlueZ library (5.44 or higher) should be ARM-cross compiled. The library is vailable under this [link](http://www.bluez.org/download/). I remember following the steps described in this [tutorial](https://wiki.beyondlogic.org/index.php?title=Cross_Compiling_BlueZ_Bluetooth_tools_for_ARM) (the complicated steps were to cross-compile dependencies).   
 
 ## Conact
 Sebti Mouelhi (sebti _dot_ mouelhi _at_ ece _dot_ fr)
