@@ -7,16 +7,16 @@ https://www.youtube.com/watch?v=2WHyy5Z7nv4<br/>
 https://www.youtube.com/watch?v=vIlWZUfYKIY<br/>
 https://www.youtube.com/watch?v=Cl-vGISxBe4
 
-Robots are directly controlled by the Romeo All-in-One V1.3 boards enslaved by Raspberry Pi 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels 4.4.21. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in the reference paper above. Distribution in the application is managed by the middleware PolyORB (maintained by AdaCore).
+Robots are directly controlled by the Romeo All-in-One V1.3 boards enslaved by Raspberry Pi (RPi) 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in the reference paper above. Distribution in the application is managed by the middleware PolyORB (maintained by AdaCore).
 
 ## Robots setting
 
 Wheeled robots should be mounted according the architecture provided in the reference paper above; the first settings you should are the following steps:
-* flash the Arduino code under `arduino/sketch_wheeled_robot.ino` under the low-level Arduino Romeo micro-controllers of robots:
+* flash the Arduino code under `arduino/sketch_wheeled_robot.ino` under the low-level Romeo controllers of robots:
  - robots should be connected by USB to your host;
  - use the tool `arduino` under your host to flash the code; 
-* use preferably a real-time kernel under high level Raspberry Pi (RPi) controllers of robots;
-* be sure that GCC and GNAT are installed under the robot RPis.
+* use preferably a real-time kernel under high level RPi controllers of robots;
+* be sure that GCC and GNAT are installed under the robot RPi controllers.
 
 ## PolyORB 2014 Compilation 
 ### Patching
