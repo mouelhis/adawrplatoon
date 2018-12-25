@@ -9,8 +9,8 @@ https://www.youtube.com/watch?v=Cl-vGISxBe4
 
 Robots are directly controlled by the Romeo All-in-One V1.3 boards enslaved by Raspberry Pi 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels 4.4.21. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in the reference paper above. Distribution in the application is managed by the middleware PolyORB (maintained by AdaCore).
 
-## Compilation 
-### PolyORB 2014 patching
+## PolyORB 2014 Compilation 
+### Patching
 
 Sources (old) can be found under the folder polyorb-src/ of the repository; the patch polyorb-src/polyorb_2014_for_arm.patch should be applied before to enable error-free ARM compilation 
 
@@ -22,9 +22,9 @@ cat polyorb_2014_arm_enabled.patch | patch -p1
 
 Compatibility issues are to be checked and fixed if a newer version of PolyORB (https://github.com/AdaCore/PolyORB) should be used. 
 
-### Dependencies
+### Native/ARM-cross compilation
 
-For native/ARM `arm-linux-gnueabihf` cross) compilation, the following packages (version 5 or higher) are required under Debian distributons:
+For native/ARM `arm-linux-gnueabihf` cross) compilation, the following dependencies (version 5 or higher) are required under Debian distributons:
 ```
 gnat
 gcc
@@ -35,10 +35,7 @@ cpp
 
 The apt installation process of the GNAT compiler automatically build the package `gprbuild`, be sure to remove it later.
 
-### Native/ARM-cross compilation
-
-Read `INSTALL` for more details:
-
+To ARM-cross compile, being under `<polyorb_sources>` run the follwoing commands (read `INSTALL` for more details):
 ```
 # ./configure --target=arm-linux-gnueabihf --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
 # make
