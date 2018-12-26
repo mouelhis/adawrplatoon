@@ -46,7 +46,7 @@ The apt installation process of the GNAT compiler build automatically the packag
 Being under `<polyorb_sources>/` run the follwoing commands to ARM-cross compile (read `INSTALL` for more details):
 ```
 # export RANLIB=/usr/bin/arm-linux-gnueabihf-ranlib
-# ./configure --target=arm-linux-gnueabihf --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
+# ./configure --target=arm-linux-gnueabihf --prefix=/usr/local/arm-linux-gnueabihf --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"
 # make
 # make install
 ```
@@ -60,7 +60,7 @@ Finally, export `/usr/local/arm-linux-gnueabihf/bin` in your `PATH`.
 For native compilation, the above compilation steps are adapted:
 
 ```
-# ./configure --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"`
+# ./configure --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"
 # make
 # make install
 ```
