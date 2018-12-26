@@ -9,6 +9,8 @@ https://www.youtube.com/watch?v=Cl-vGISxBe4
 
 Robots are directly controlled by Romeo All-in-One V1.3 boards enslaved by Raspberry Pi (RPi) 3 cards on which a distributed software application of platooning control is deployed and executed under real-time (Preempt_RT) Linux kernels. The control software  is implemented in Ada and based on the object-oriented component-based design approach presented in [\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739). Distribution is managed by the middleware PolyORB (maintained by AdaCore).
 
+The platoon animations are not spectacular but they depicts a poof of concept for our approach.
+
 ## Wheeled robots
 
 Robots should be mounted according the architecture provided in [\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739); the first settings are the following:
