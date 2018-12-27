@@ -23,7 +23,9 @@ Robots should be mounted according the architecture provided in [\[Ref\]](https:
 ## PolyORB 2014 Compilation 
 ### Patching
 
-Sources (old) can be found under the folder `polyorb-src/` of the repository; the patch `polyorb-src/polyorb_2014_arm_enabled.patch` should be applied before to enable error-free ARM compilation 
+Old (2014) sources are vailable under the folder `polyorb-src/` of the repository. 
+
+The patch `polyorb-src/polyorb_2014_arm_enabled.patch` should be applied before to enable error-free ARM compilation:
 
 ```
 cp polyorb_2014_arm_enabled.patch <polyorb_sources>/
