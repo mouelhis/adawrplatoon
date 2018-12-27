@@ -1,6 +1,6 @@
 # Distributed control of wheeled robots platoons using the middlware PolyORB
 
-This github repository is an Ada implementation of the distributed speed controller for platoons of connected wheeled robot. The software design and protyping approaches are presented in [\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739).
+This github repository is an Ada implementation of a distributed speed controller for platoons of connected wheeled robot. The software design and protyping approaches are presented in [\[Ref\]](https://hal.archives-ouvertes.fr/hal-01592739).
 
 See animations in these Youtube videos:<br/>
 https://www.youtube.com/watch?v=2WHyy5Z7nv4<br/>
