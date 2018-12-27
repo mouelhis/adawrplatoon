@@ -64,6 +64,7 @@ Finally, export `/usr/local/arm-linux-gnueabihf/bin` in your `PATH`.
 For native compilation, the above compilation steps are adapted:
 
 ```
+# export RANLIB=/usr/bin/ranlib
 # ./configure --with-appli-perso="corba moma dsa" --with-corba-services="event ir naming notification time"
 # make
 # make install
